@@ -191,7 +191,7 @@ async def chat_completions(request: Request) -> Any:
                 source_ip=source_ip,
             )
         )
-        return JSONResponse(status_code=502, content={"error": f"Upstream error: {exc}"})
+        return JSONResponse(status_code=502, content={"error": "Upstream service unavailable"})
 
     # 6. Success. Audit the allow, including guardrail telemetry.
     audit_logger.record(
