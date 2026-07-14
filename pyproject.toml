@@ -9,7 +9,7 @@ description = "Zero Trust gateway for AI workloads, built on Entra ID identity v
 requires-python = ">=3.11"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "Jamel Rainey (Mitus)" }]
+authors = [{ name = "Mel Rainey" }]
 
 [tool.setuptools.packages.find]
 where = ["src"]
