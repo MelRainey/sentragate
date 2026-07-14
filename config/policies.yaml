@@ -1,0 +1,42 @@
+# SentraGate Zero Trust policy definitions.
+#
+# Modeled on Microsoft Entra ID Conditional Access. Rules are evaluated in
+# two passes: all "deny" rules first (deny always wins), then "allow" rules.
+# If nothing matches, the request is denied by default. There is no implicit
+# allow path in this gateway.
+#
+# Available context fields for "when":
+#   groups            - list, matches if the identity belongs to any listed group
+#   risk_level         - scalar, from the identity's risk claim (low/medium/high)
+#   device_compliant   - scalar boolean, from Entra ID device compliance state
+#   model              - scalar, the model requested in the API call
+#   subject             - scalar, the verified identity's subject (user or service)
+
+policies:
+  - name: "block-high-risk-sessions"
+    effect: deny
+    when:
+      risk_level: ["high"]
+
+  - name: "block-noncompliant-device-for-frontier-models"
+    effect: deny
+    when:
+      model: ["gpt-4", "gpt-4o", "claude-opus"]
+      device_compliant: [false]
+
+  - name: "allow-security-admins-full-access"
+    effect: allow
+    when:
+      groups: ["security-admins"]
+
+  - name: "allow-employees-standard-models"
+    effect: allow
+    when:
+      groups: ["employees"]
+      model: ["gpt-4o", "gpt-3.5-turbo", "claude-sonnet"]
+
+  - name: "allow-interns-sandbox-model-only"
+    effect: allow
+    when:
+      groups: ["interns"]
+      model: ["gpt-3.5-sandbox"]
