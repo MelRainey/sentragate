@@ -116,7 +116,7 @@ These are documented in detail, with the reasoning behind each tradeoff, in [`do
 
 ## About this project
 
-Built by **Jamel Rainey (Mitus)**, Senior Security Architect and AI Security content creator. More architecture breakdowns and the "LinkedIn fantasy vs. cybersecurity reality" series at [melrainey.com](https://melrainey.com).
+Built by **Mel Rainey**, AI Security Engineer & content creator. More architecture breakdowns and the "LinkedIn fantasy vs. cybersecurity reality" series at [melrainey.com](https://melrainey.com).
 
 ## License
 
