@@ -91,7 +91,7 @@ async def chat_completions(request: Request) -> Any:
                 source_ip=source_ip,
             )
         )
-        return JSONResponse(status_code=401, content={"error": f"Authentication failed: {exc}"})
+        return JSONResponse(status_code=401, content={"error": "Authentication failed"})
 
     # 2. Policy evaluation against verified claims.
     context = RequestContext(
